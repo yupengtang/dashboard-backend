@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: a21_server
+Version: 0.0.1
+Summary: Backend for the A21 Urban Planning project of the XAI-IML 2023 course.
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Development Status :: 2 - Pre-Alpha
+Requires-Dist: Flask>=2.0.0
+Requires-Dist: flask-restful<0.4,>=0.3.9
+Requires-Dist: flask-cors<3.1,>=3.0.10
+Requires-Dist: shap==0.41.0
+Requires-Dist: numba==0.56.4
+Requires-Dist: xgboost==1.6.2
+Requires-Dist: numpy==1.22.2
+Requires-Dist: pandas
+Requires-Dist: packaging
+Requires-Dist: flask_restful
+Requires-Dist: scikit-learn==1.0.2
+Requires-Dist: geopandas
+Requires-Dist: scipy
+Requires-Dist: matplotlib
