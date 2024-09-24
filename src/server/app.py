@@ -1,19 +1,17 @@
 import argparse
-import os.path
+import os
 import sys
 from flask import Flask
 from flask_cors import CORS
-#from resources import simple_plot as sp
-#from resources import plot_utils as pu
 import pandas as pd
 import warnings
-from routes import add_routes #server.router
+from routes import add_routes
 warnings.filterwarnings("ignore")
 import platform
 
 
 def create_app():
-    app = Flask(__name__)  # static_url_path, static_folder, template_folder...
+    app = Flask(__name__)  
     CORS(app, resources={r"/*": {"origins": "*"}})
     add_routes(app)
     return app
@@ -25,12 +23,12 @@ def start_server():
     # API flag
     parser.add_argument(
         "--host",
-        default="127.0.0.1",
+        default="127.0.0.1",  # Default to localhost for local development
         help="The host to run the server",
     )
     parser.add_argument(
         "--port",
-        default=8000,
+        default=8000,  # Default port for local development
         help="The port to run the server",
     )
     parser.add_argument(
@@ -41,9 +39,13 @@ def start_server():
 
     args = parser.parse_args()
 
+    # Check if running in a cloud environment with a specified PORT
+    host = "0.0.0.0"  # Bind to 0.0.0.0 to allow external access
+    port = int(os.environ.get("PORT", args.port))  # Use PORT from environment if available
+
     server_app = create_app()
 
-    server_app.run(debug=args.debug, host=args.host, port=args.port)
+    server_app.run(debug=args.debug, host=host, port=port)
 
 
 if __name__ == "__main__":
